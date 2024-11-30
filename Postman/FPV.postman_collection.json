@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "15b08163-3fe6-4ae8-a397-8ad6a4433dec",
+		"name": "FPV",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15006847",
+		"_collection_link": "https://satp-j.postman.co/workspace/SiMM~6a85c4c4-8aec-45be-b536-bcf0e75b6de5/collection/15006847-15b08163-3fe6-4ae8-a397-8ad6a4433dec?action=share&source=collection_link&creator=15006847"
+	},
+	"item": [
+		{
+			"name": "SingUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"dron123456178\",\r\n    \"password1\" : \"dron123456\",\r\n    \"password2\" : \"dron123456\",\r\n    \"email\" : \"dron123456178@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{basUrl}}/auth/signup",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{basUrl}}"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"var token = response.token;\r",
+							"pm.collectionVariables.set(\"token\", token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"dron1234@mail.com\",\r\n    \"password\": \"dron1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{basUrl}}/auth/login",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{basUrl}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"max\": 10,\r\n    \"order\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{basUrl}}/task",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{basUrl}}"
+					],
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TaskId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{basUrl}}/task/{{taskId}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{basUrl}}"
+					],
+					"path": [
+						"task",
+						"{{taskId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNTU2MzY2OCwianRpIjoiYWZjZTg2ZWEtMTZjZS00Y2JkLWFlM2UtYzk0ODA5Njc5YWY4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTIsIm5iZiI6MTcxNTU2MzY2OCwiY3NyZiI6ImZmN2IxNTU1LWFhM2UtNDZjNy05MjVmLTc3NDFlNWRkMjk3ZSIsImV4cCI6MTcxNTU2NDU2OH0.U5QyB0Q2vKTToupIUOa62kt43sk61YyCbTWhFJhdcG4",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filename\":\"https://raw.githubusercontent.com/gsgomezm/MISW4204-SWNube-MEG/main/VideosFpv/Editing/dron.mp4\"\r\n\t\t\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}://{{basUrl}}/task",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{basUrl}}"
+					],
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TaskId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{basUrl}}/task/{{taskId}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{basUrl}}"
+					],
+					"path": [
+						"task",
+						"{{taskId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "basUrl",
+			"value": "34.111.230.205"
+		},
+		{
+			"key": "taskId",
+			"value": "5"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxNDkyMDU5OCwianRpIjoiNmIxMGMyYWQtYmE4MC00MTg5LWEyY2QtNDY4Y2NmYzhmZDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTIsIm5iZiI6MTcxNDkyMDU5OCwiY3NyZiI6ImZlYjY4Njg4LTFjM2QtNDY0Ni05YjJkLWE2NTBlYzIxNzMwYSIsImV4cCI6MTcxNDkyMTQ5OH0.PkS_OJbPxS9rQw0wV7HjyDqS4VrjRaYm7I3py3RJ0fQ"
+		},
+		{
+			"key": "protocol",
+			"value": "http",
+			"type": "string"
+		}
+	]
+}
