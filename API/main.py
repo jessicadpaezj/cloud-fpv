@@ -17,10 +17,10 @@ def add_urls(app):
     # api.add_resource(SingUp, '/auth/signup')
     # api.add_resource(Task, '/task')
     # api.add_resource(Task_Id, '/task/<int:id_task>') 
-    app.add_url_rule('/auth/login', view_func=LogIn.as_view('login'))
-    app.add_url_rule('/auth/signup', view_func=SingUp.as_view('signup'))
-    app.add_url_rule('/task', view_func=Task.as_view('task'))
-    app.add_url_rule('/task/<int:id_task>', view_func=TaskId.as_view('taskid'))
+    app.add_url_rule('/api/auth/login', view_func=LogIn.as_view('login'))
+    app.add_url_rule('/api/auth/signup', view_func=SingUp.as_view('signup'))
+    app.add_url_rule('/api/task', view_func=Task.as_view('task'))
+    app.add_url_rule('/api/task/<int:id_task>', view_func=TaskId.as_view('taskid'))
 
 def create_flask_app():
     app = Flask(__name__)
