@@ -3,7 +3,7 @@ import time
 
 from process_video import process_video
 
-project_id = "master-cloud-420017"
+project_id = "proyecto-fpv-idrl"
 subscription_id = "video-sub"
 timeout = 5.0
 

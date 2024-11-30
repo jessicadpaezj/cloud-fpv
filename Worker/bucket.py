@@ -2,11 +2,11 @@
 from google.cloud import storage
 
 # Instantiates a client
-project_id = 'master-cloud-420017'
+project_id = 'proyecto-fpv-idrl'
 storage_client = storage.Client(project = project_id)
 
 # The name for the new bucket
-bucket_name = "fpv-videos"
+bucket_name = "bucket-video-fpv-idrl"
 
 # Creates the new bucket
 def upload_file(blob_name, file_path):

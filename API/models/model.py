@@ -9,9 +9,9 @@ db = declarative_base()
 
 def connect_db() -> sqlalchemy.engine.base.Engine:
     
-    db_host = "34.95.252.108"
-    db_user = "postgres"
-    db_pass = "$'khs7QF`nykVDF5"
+    db_host = "35.226.117.181"
+    db_user = "admin"
+    db_pass = "1234"
     db_name = "fpv-database"
     db_port = "5432"
 
